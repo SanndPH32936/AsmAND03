@@ -1,5 +1,7 @@
 package com.example.asmand03.model;
 
+import java.util.ArrayList;
+
 public class PhoneModel {
     private String _id ;
     private String name;
@@ -7,22 +9,6 @@ public class PhoneModel {
     private int price;
     private String des;
     private String img;
-
-    public PhoneModel(String name, String brand, int price, String des, String img) {
-        this.name = name;
-        this.brand = brand;
-        this.price = price;
-        this.des = des;
-        this.img = img;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
 
     public PhoneModel(String _id, String name, String brand, int price, String des, String img) {
         this._id = _id;
@@ -32,6 +18,22 @@ public class PhoneModel {
         this.des = des;
         this.img = img;
     }
+
+    public PhoneModel(String name, String brand, int price, String des) {
+        this.name = name;
+        this.brand = brand;
+        this.price = price;
+        this.des = des;
+    }
+
+    public PhoneModel(String name, String brand, int price, String des, String img) {
+        this.name = name;
+        this.brand = brand;
+        this.price = price;
+        this.des = des;
+        this.img = img;
+    }
+
 
     public String get_id() {
         return _id;
@@ -57,6 +59,13 @@ public class PhoneModel {
         this.brand = brand;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
 
     public String getDes() {
         return des;
@@ -66,11 +75,11 @@ public class PhoneModel {
         this.des = des;
     }
 
-    public String getImg() {
+    public String getImage() {
         return img;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setImage(String image) {
+        this.img = image;
     }
 }

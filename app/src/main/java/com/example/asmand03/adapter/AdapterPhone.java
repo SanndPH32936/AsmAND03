@@ -54,13 +54,14 @@ public class AdapterPhone extends RecyclerView.Adapter<AdapterPhone.HolderAdapte
         holder.tvPrice.setText(""+ph.getPrice() +" VNĐ");
         holder.tvBrand.setText(ph.getBrand());
         holder.tvId.setText("ID: "+ph.get_id());
-        Picasso.get().load(ph.getImg()).into(holder.imgPhone);
+        Picasso.get().load(ph.getImage()).into(holder.imgPhone);
+
 
         holder.btnXoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://192.168.1.6:3000/")
+                        .baseUrl("http://"+ApiServer.IPv4+":3000/")
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
 
@@ -101,7 +102,7 @@ public class AdapterPhone extends RecyclerView.Adapter<AdapterPhone.HolderAdapte
                 bundle.putString("brand",ph.getBrand());
                 bundle.putInt("price",ph.getPrice());
                 bundle.putString("des",ph.getDes());
-                bundle.putString("img",ph.getImg());
+//                bundle.putString("img",ph.getImg());
                 intent.putExtras(bundle);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);

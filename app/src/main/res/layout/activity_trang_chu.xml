@@ -16,6 +16,14 @@
         android:text="Trang chủ"
         android:textSize="34sp" />
 
+    <EditText
+        android:id="@+id/edtTimKiem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Tìm kiếm"
+        android:inputType="text" />
+
     <Button
         android:id="@+id/btnDangXuat"
         android:layout_width="match_parent"
@@ -27,6 +35,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Thêm" />
+
+    <Button
+        android:id="@+id/btnSapXep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sắp xếp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcPhones"

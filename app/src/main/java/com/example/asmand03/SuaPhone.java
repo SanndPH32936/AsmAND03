@@ -41,16 +41,37 @@ public class SuaPhone extends AppCompatActivity {
         if (bundle == null){
             return;
         }
+
+
         setChu(bundle.getString("ten"), bundle.getString("brand") , bundle.getString("des"), ""+bundle.getInt("price"),bundle.getString("img"));
-        PhoneModel model = new PhoneModel(bundle.getString("ten"),bundle.getString("brand"),bundle.getInt("price"),bundle.getString("des"),bundle.getString("img"));
+        try {
+
+
+            btnSua.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String ten = edtTen.getText().toString(),
+                            brand = edtBrand.getText().toString(),
+                            des = edtDes.getText().toString(),
+
+                            img = edtImg.getText().toString();
+                    Integer price = Integer.parseInt(edtPrice.getText().toString());
+                    PhoneModel model = new PhoneModel(ten,brand,price,des,img);
+
+                    suaPhone(bundle.getString("id"),model);
+                }
+            });
+
+
+        }catch (NumberFormatException e){
+            Toast.makeText(this, "Phải là số", Toast.LENGTH_SHORT).show();
+        }
+
+
+
         Toast.makeText(this, "Đã có", Toast.LENGTH_SHORT).show();
 
-        btnSua.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                suaPhone(bundle.getString("id"),model);
-            }
-        });
+
 
     }
 
@@ -69,7 +90,7 @@ public class SuaPhone extends AppCompatActivity {
 
     private  void  suaPhone (String phoneId,PhoneModel phone){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.6:3000/")
+                .baseUrl("http://"+ApiServer.IPv4+":3000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -82,7 +103,7 @@ public class SuaPhone extends AppCompatActivity {
             public void onResponse(Call<PhoneModel> call, Response<PhoneModel> response) {
                 if (response.isSuccessful()){
                         PhoneModel upPhone= response.body();
-
+                    Toast.makeText(SuaPhone.this, ""+phone.getName(), Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(SuaPhone.this,TrangChu.class));
                     Toast.makeText(SuaPhone.this, "Ok", Toast.LENGTH_SHORT).show();
                 }else {

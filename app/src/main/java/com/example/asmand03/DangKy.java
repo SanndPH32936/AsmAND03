@@ -63,7 +63,7 @@ public class DangKy extends AppCompatActivity {
                     Toast.makeText(DangKy.this, "Đăng kí thành công", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(DangKy.this, TrangChu.class));
                 }    else {
-                    Toast.makeText(DangKy.this, "Đăng kí thất bại", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DangKy.this, "Đăng kí thất bại"+task.getException(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
